@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 /**
  * Write a description of class ProgrammingPractice here.
@@ -21,7 +23,7 @@ public class ProgrammingPractice
     {
         // initialise instance variables
         getInput();
-        printStudentMark();
+        
         
         
     }
@@ -29,23 +31,26 @@ public class ProgrammingPractice
     public void getInput(){
         boolean correctInput=false;
         do{
-            System.out.println("How many Students");
+            System.out.println("How many students do you want to record the marks?");
             numberOfCalculation=(new Scanner (System.in)).nextint();
-            if(numberOfCalculation>0&&numberOfCalculation<=100){
+            if(numberOfCalculation>0&&numberOfCalculation<=25){
                 correctInput=true;
             }else{
-                System.out.println("Incorrect value")
+                System.out.println("Incorrect value, please add value belwen 0 to 25");
             
             }
         }while(!correctInput);
         
         int i=0;
         while(i<numberOfCalculation){
-            S
+            System.out.println("Please type marks of the students");
+            studentMarks.add((new Scanner(System.in).nextDouble()));
+            i++;
         
         }
     
     }
+    
 
     /**
      * An example of a method - replace this comment with your own
