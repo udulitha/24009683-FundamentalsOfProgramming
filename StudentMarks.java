@@ -39,8 +39,6 @@ class StudentMarks {
     Scanner in = new Scanner(System.in);
     System.out.println("Input the unit name:");
     String unitName = in.nextLine();
-    //System.out.println("Input number of students:");
-    //numberOfStudents = Integer.parseInt(in.nextLine());
         
 
             int i=0;
@@ -107,9 +105,7 @@ public void findStandardDeviation(){
     for (double stumark : marks){ 
           standardDeviation +=  Math.pow(stumark-mean, 2);
         }
-    /*for(i = 0; i < marks.length; i++){
-        standardDeviation = standardDeviation + Math.pow(i-mean, 2);
-    }*/
+    
     
     standardDeviation =  Math.sqrt((standardDeviation/(marks.length-1)));
     System.out.println("The Standard Deviation: " + standardDeviation);
