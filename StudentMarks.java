@@ -25,7 +25,7 @@ class StudentMarks {
      */
     public StudentMarks()
     {
-    marks = new double[3];
+    marks = new double[25];
     sum=0;
     mean=0;
     standardDeviation=0;
