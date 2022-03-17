@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 
 /**
@@ -11,9 +12,11 @@ import java.util.Scanner;
 class StudentMarks {
 	
 	
-	private double[] marks;
-	private double mean;
-	private double statdardDeviation;
+    private double[] marks;
+    private int numberOfStudents;
+    private double sum;
+    private double mean;
+    private double StandardDeviation;
 
 
     /**
@@ -22,6 +25,8 @@ class StudentMarks {
     public StudentMarks()
     {
         marks = new double[25];
+	numberOfStudents=0;
+	sum=0;
 	mean=0;
 	statdardDeviation=0;
 
@@ -92,7 +97,28 @@ public void findMaxMinMarks(){
     
 }
 
-public void meanOfTheMarks(){
+public void findMean(){
+
+
+      
+      double i;
+      
+      for(i = 0; i < numberOfStudents; i++) {
+         sum+=marks[i];
+      }
+	mean= sum/numberOfStudents;
+	System.out.println("Mean of student marks::"+ mean);
+
+}
+
+public void findStandardDeviation(){
+
+	for(i = 0; i < numberOfStudents; i++){
+	    StandardDeviation = StandardDeviation + Math.pow(i-mean, 2);
+	}
+	
+	return Math.sqrt((StandardDeviation/numberOfStudents));
+	System.out.println("The Standard Deviation: " + StandardDeviation);
 
 }
 
@@ -104,6 +130,8 @@ public class Main {
         		myObj.getInput();
 			myObj.printStudentMarks();
 			myObj.findMaxMinMarks();
+			myObj.findMean();
+			myObj.findStandardDeviation();
 			
 
 			
