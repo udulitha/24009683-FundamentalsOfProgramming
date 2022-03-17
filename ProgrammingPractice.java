@@ -14,6 +14,7 @@ public class ProgrammingPractice
     private String unit;
     private double marks;
     private ArrayList<Double> studentMarks = new ArrayList<>();
+    private int numberOfCalculation;
     
 
     /**
@@ -32,7 +33,7 @@ public class ProgrammingPractice
         boolean correctInput=false;
         do{
             System.out.println("How many students do you want to record the marks?");
-            numberOfCalculation=(new Scanner (System.in)).nextint();
+            numberOfCalculation=(new Scanner (System.in)).nextInt();
             if(numberOfCalculation>0&&numberOfCalculation<=25){
                 correctInput=true;
             }else{
