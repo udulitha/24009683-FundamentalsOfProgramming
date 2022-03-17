@@ -10,13 +10,14 @@ import java.lang.Math;
  * @version (A.1.2.0)
  */
 class StudentMarks {
-	
-	
+    
+    
     private double[] marks;
-    private int numberOfStudents;
     private double sum;
     private double mean;
-    private double StandardDeviation;
+    private double standardDeviation;
+    private double max;
+    private double min;
 
 
     /**
@@ -24,121 +25,114 @@ class StudentMarks {
      */
     public StudentMarks()
     {
-        marks = new double[25];
-	numberOfStudents=0;
-	sum=0;
-	mean=0;
-	statdardDeviation=0;
+    marks = new double[3];
+    sum=0;
+    mean=0;
+    standardDeviation=0;
 
     }
 
  public void getInput(){
 
-	boolean correctMarks=false;
-	
-	Scanner in = new Scanner(System.in);
-	System.out.println("Input the unit name:");
-	String unitName = in.nextLine();
-      	System.out.println("Input number of students:");
-	int numberOfStudents = Integer.parseInt(in.nextLine().trim());
-		
-            if(numberOfStudents>0 && numberOfStudents<=25){
+    boolean correctMarks=false;
+    
+    Scanner in = new Scanner(System.in);
+    System.out.println("Input the unit name:");
+    String unitName = in.nextLine();
+    //System.out.println("Input number of students:");
+    //numberOfStudents = Integer.parseInt(in.nextLine());
+        
 
-                int i=0;
-        	while(i<numberOfStudents){
-            	System.out.println("Input Student Marks:");
-            	marks[i]=(new Scanner(System.in)).nextDouble();
-		
-			if(i>0 && i=<100){
-				correctMarks=true;
-				i++;
-				
-        		}else{
-			System.out.println("Incorrect value, please type a number between 0 and 100");
-                        }
-
-
-            }
-        }else{
-                System.out.println("Incorrect value, please type a number between 0 and 25");
+            int i=0;
+            while(i<marks.length){
+                try {
+                    System.out.println("Input Student Marks:");
+                    double enteredValue = Double.parseDouble(in.nextLine());
+                    marks[i]= enteredValue;
+        
+                    if(enteredValue>=0 && enteredValue<=100){
+                        correctMarks=true;
+                        i++;
+                    }else{
+                        System.out.println("Incorrect value, please type a number between 0 and 100");
+                    }
+                 } catch (NumberFormatException e) {
+                    System.out.println("Incorrect value, please type a number");
+                }
             }
 
         }
        
 public void printStudentMarks(){
-	System.out.println("Student Marks: " +marks);
+   
+    for (double stumark : marks){ 
+            System.out.println("Student Marks: " +stumark);
+    }
 }
 
 public void findMaxMinMarks(){
 
-		StudentMarks stu = new StudentMarks();
-		StudentMarks max = new StudentMarks();
-		StudentMarks min = new StudentMarks("", 100);
-		for (int i = 0; i < n; i ++) {
-			
-			
-			stu.marks = in.nextDouble();
-			if (max.marks < stu.marks) {
-				
-				
-				max.marks = stu.marks;
-				System.out.println("Student heighest Marks: " +max.marks);
-			}
-			if (min.marks > stu.marks) {
-				
-				
-				min.marks = stu.marks;
-				System.out.println("Student heighest Marks: " +min.marks);
-
+         //find max
+        max = marks[0];
+        for (double stumark : marks){ 
+           
+            if(max < stumark){
+                max = stumark;
+            }
         }
- 
-
-    }
+        System.out.println("Student heighest Marks: " +max);
+        //find min
+        min = marks[0];
+        for (double stumark : marks){ 
+            if(min > stumark){
+                min = stumark;
+            }
+        }
+        System.out.println("Student lowerst Marks: " +min);
     
 }
 
 public void findMean(){
 
-
-      
-      double i;
-      
-      for(i = 0; i < numberOfStudents; i++) {
-         sum+=marks[i];
-      }
-	mean= sum/numberOfStudents;
-	System.out.println("Mean of student marks::"+ mean);
+       for (double stumark : marks){ 
+          sum += stumark;
+        }
+    mean= sum/marks.length;
+    System.out.println("Mean of student marks::"+ mean);
 
 }
 
 public void findStandardDeviation(){
 
-	for(i = 0; i < numberOfStudents; i++){
-	    StandardDeviation = StandardDeviation + Math.pow(i-mean, 2);
-	}
-	
-	return Math.sqrt((StandardDeviation/numberOfStudents));
-	System.out.println("The Standard Deviation: " + StandardDeviation);
+    for (double stumark : marks){ 
+          standardDeviation +=  Math.pow(stumark-mean, 2);
+        }
+    /*for(i = 0; i < marks.length; i++){
+        standardDeviation = standardDeviation + Math.pow(i-mean, 2);
+    }*/
+    
+    standardDeviation =  Math.sqrt((standardDeviation/(marks.length-1)));
+    System.out.println("The Standard Deviation: " + standardDeviation);
 
 }
 
 
-public class Main {
-	public static void main(String[] args) {
-		
-		        StudentMarks myObj=new StudentMarks();
-        		myObj.getInput();
-			myObj.printStudentMarks();
-			myObj.findMaxMinMarks();
-			myObj.findMean();
-			myObj.findStandardDeviation();
-			
 
-			
-		}
-		
-	}
-}
+public static void main(String[] args) {
+        
+            StudentMarks myObj=new StudentMarks();
+            myObj.getInput();
+            myObj.printStudentMarks();
+            myObj.findMaxMinMarks();
+            myObj.findMean();
+            myObj.findStandardDeviation();
+            
+
+            
+        }
+        
+    }
+
 
     /**
      * An example of a method - replace this comment with your own
