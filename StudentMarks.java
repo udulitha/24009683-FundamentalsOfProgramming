@@ -63,37 +63,38 @@ class StudentMarks {
        
 public void printStudentMarks(){
    
-    for (double stumark : marks){ 
-            System.out.println("Student Marks: " +stumark);
+    for (double studentMark : marks){ 
+            System.out.println("Student Marks: " +studentMark);
     }
 }
 
 public void findMaxMinMarks(){
 
-         //find max
+         //find heighest Marks
         max = marks[0];
-        for (double stumark : marks){ 
+        for (double studentMark : marks){ 
            
-            if(max < stumark){
-                max = stumark;
+            if(max < studentMark){
+                max = studentMark;
             }
         }
         System.out.println("Student heighest Marks: " +max);
-        //find min
+        //find lowest Marks
         min = marks[0];
-        for (double stumark : marks){ 
-            if(min > stumark){
-                min = stumark;
+        for (double studentMark : marks){ 
+            if(min > studentMark){
+                min = studentMark;
             }
         }
-        System.out.println("Student lowerst Marks: " +min);
+        System.out.println("Student lowest Marks: " +min);
     
 }
 
 public void findMean(){
+    // find mean of the student marks
 
-       for (double stumark : marks){ 
-          sum += stumark;
+       for (double studentMark : marks){ 
+          sum += studentMark;
         }
     mean= sum/marks.length;
     System.out.println("Mean of student marks::"+ mean);
@@ -101,9 +102,10 @@ public void findMean(){
 }
 
 public void findStandardDeviation(){
+    // Find standard deviation of the student marks
 
-    for (double stumark : marks){ 
-          standardDeviation +=  Math.pow(stumark-mean, 2);
+    for (double studentMark : marks){ 
+          standardDeviation +=  Math.pow(studentMark-mean, 2);
         }
     
     
